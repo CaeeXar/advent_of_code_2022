@@ -13,11 +13,23 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\day01">
+      <UniqueIdentifier>{51764f89-3fc8-468f-92da-589eb7b14020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\dayxx">
+      <UniqueIdentifier>{6bcf7a2d-9120-49cf-96b0-f0ec5b7f4863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\dayxx">
+      <UniqueIdentifier>{2e50ba7e-4cc8-4794-a81d-62a07fddcb08}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Quelldateien\day01">
       <UniqueIdentifier>{2d7536d8-9d28-4a40-808e-82f4c9d3b9a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Headerdateien\day01">
-      <UniqueIdentifier>{51764f89-3fc8-468f-92da-589eb7b14020}</UniqueIdentifier>
+    <Filter Include="Quelldateien\day02">
+      <UniqueIdentifier>{fe7b8f96-1e4e-4c8d-852e-e4a044210ab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\day02">
+      <UniqueIdentifier>{9c82be21-0150-4a22-9aab-f60e6db6b84b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,18 +39,36 @@
     <ClCompile Include="Day01.cpp">
       <Filter>Quelldateien\day01</Filter>
     </ClCompile>
+    <ClCompile Include="Dayxx.cpp">
+      <Filter>Quelldateien\dayxx</Filter>
+    </ClCompile>
+    <ClCompile Include="Day02.cpp">
+      <Filter>Quelldateien\day02</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day01.h">
       <Filter>Headerdateien\day01</Filter>
     </ClInclude>
+    <ClInclude Include="Dayxx.h">
+      <Filter>Headerdateien\dayxx</Filter>
+    </ClInclude>
+    <ClInclude Include="Day02.h">
+      <Filter>Headerdateien\day02</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Day01_Test.txt">
-      <Filter>Quelldateien\day01</Filter>
+      <Filter>Ressourcendateien</Filter>
     </Text>
     <Text Include="Day01_Input.txt">
-      <Filter>Quelldateien\day01</Filter>
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+    <Text Include="Day02_Test.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+    <Text Include="Day02_Input.txt">
+      <Filter>Ressourcendateien</Filter>
     </Text>
   </ItemGroup>
 </Project>

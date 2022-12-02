@@ -132,14 +132,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Day01.cpp" />
+    <ClCompile Include="Day02.cpp" />
+    <ClCompile Include="Dayxx.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day01.h" />
+    <ClInclude Include="Day02.h" />
+    <ClInclude Include="Dayxx.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Day01_Input.txt" />
     <Text Include="Day01_Test.txt" />
+    <Text Include="Day02_Input.txt" />
+    <Text Include="Day02_Test.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
