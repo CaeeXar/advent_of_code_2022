@@ -14,7 +14,7 @@ int main()
 	}
 	else {
 		if (day == 1) day01::run();
-		if (day == 2) day02::runTest();
+		if (day == 2) day02::run();
 	}
 
 	return 0;
