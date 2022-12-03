@@ -4,6 +4,7 @@ namespace dayxx
 {
 	auto logic1(std::string file, bool debug = false)
 	{
+		if (debug) std::cout << "debug\n";
 		return -1;
 	}
 
