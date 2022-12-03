@@ -22,8 +22,8 @@ namespace day03
 			char c{lines[0][i]};
 			std::string_view s1{lines[1]}, s2{lines[2]};
 			bool found{
-				s1.find(c) != std::string::npos &&
-				s2.find(c) != std::string::npos
+				s1.find(c) != std::string_view::npos &&
+				s2.find(c) != std::string_view::npos
 			};
 			if (found) return lines[0][i];
 		}
@@ -38,21 +38,18 @@ namespace day03
 		// NewRange = (NewMax - NewMin)
 		// NewValue = ((( OldValue - OldMin ) * NewRange) / OldRange) + NewMin
 
-		int p;
 		if (c > 'Z')
 		{
 			// lower
-			int oldRange{'z' - 'a'}, newRange{26 - 1}, value{(((c - 'a') * newRange) / oldRange) + 1};
-			p = {value};
+			int oldRange{'z' - 'a'}, newRange{26 - 1};
+			return (((c - 'a') * newRange) / oldRange) + 1;
 		}
 		else
 		{
 			// upper
-			int oldRange{'Z' - 'A'}, newRange{26 - 1}, value{(((c - 'A') * newRange) / oldRange) + 27};
-			p = {value};
+			int oldRange{'Z' - 'A'}, newRange{26 - 1};
+			return (((c - 'A') * newRange) / oldRange) + 27;
 		}
-
-		return p;
 	}
 
 	auto logic1(std::string file, bool debug = false)
