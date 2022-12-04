@@ -1,6 +1,6 @@
-#include "Dayxx.h"
+#include "Day04.h"
 
-namespace dayxx
+namespace day04
 {
 	auto logic1(std::string file, bool debug = false)
 	{
@@ -10,7 +10,7 @@ namespace dayxx
 		std::string line;
 		while (std::getline(stream, line))
 		{
-
+			std::cout << line << "\n";
 		}
 
 		return -1;
@@ -34,24 +34,24 @@ namespace dayxx
 	{
 		bool debug{true};
 
-		std::string file{""};
-		std::cout << "*** Testing day xx ***\n\n";
+		std::string file{"Day04_Test.txt"};
+		std::cout << "*** Testing day 04 ***\n\n";
 
 		auto x = logic1(file);
 		std::cout << "Part 1 (Test): " << x << "\n";
-		assert(x == dayxx::RESULT1);
+		assert(x == day04::RESULT1);
 
 		if (debug) std::cout << "------------------" << "\n";
 
 		auto y = logic2(file);
 		std::cout << "Part 2 (Test): " << y << "\n";
-		assert(y == dayxx::RESULT2);
+		assert(y == day04::RESULT2);
 	}
 
 	void run()
 	{
-		std::string file{""};
-		std::cout << "*** Running day xx ***\n\n";
+		std::string file{"Day04_Input.txt"};
+		std::cout << "*** Running day 04 ***\n\n";
 
 		auto x = logic1(file);
 		std::cout << "Part 1: " << x << "\n";
