@@ -8,6 +8,7 @@
 
 int main()
 {
+
 	int day{6}, test{0};
 
 	if (test) {

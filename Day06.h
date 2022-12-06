@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <cassert>
+#include <set>
 
 #ifndef Day06
 

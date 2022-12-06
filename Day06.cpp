@@ -5,13 +5,8 @@ namespace day06
 	bool isUnique(std::string_view s, bool isPartOne = true)
 	{
 		const int range{isPartOne ? MARKER_RANGE_1 : MARKER_RANGE_2};
-
-		for (int i{0}; i < range; ++i)
-		{
-			if (std::count(s.begin(), s.end(), s[i]) > 1) return false;
-		}
-
-		return true;
+		std::set<char> set{s.begin(), s.begin() + range};
+		return set.size() == range;
 	}
 
 	auto logic1(std::string file, bool debug = false)
