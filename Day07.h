@@ -1,9 +1,11 @@
+#include <boost/algorithm/string.hpp>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <cassert>
+#include <map>
 
 #ifndef Day07
 
