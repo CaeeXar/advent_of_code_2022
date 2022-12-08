@@ -2,7 +2,6 @@
 
 namespace day08
 {
-
 	void printTreeMap(const std::vector<std::vector<int>>& treeMap)
 	{
 		for (std::vector<int> row : treeMap)
@@ -64,6 +63,50 @@ namespace day08
 		return visible;
 	}
 
+	int getViewLengthScoreAt(const std::vector<std::vector<int>>& treeMap, const int row, const int col)
+	{
+		const int value{treeMap[row][col]};
+		int topViewLength{0}, bottomViewLength{0}, leftViewLength{0}, rightViewLength{0};
+
+		for (int _row{row - 1}; _row >= 0; --_row)
+		{
+			++topViewLength;
+			if (treeMap[_row][col] >= value) break;
+		}
+
+		for (int _row{row + 1}; _row < treeMap.size(); ++_row)
+		{
+			++bottomViewLength;
+			if (treeMap[_row][col] >= value) break;
+		}
+
+		for (int _col{col - 1}; _col >= 0; --_col)
+		{
+			++leftViewLength;
+			if (treeMap[row][_col] >= value) break;
+		}
+
+		for (int _col{col + 1}; _col < treeMap[row].size(); ++_col)
+		{
+			++rightViewLength;
+			if (treeMap[row][_col] >= value) break;
+		}
+
+		return topViewLength * bottomViewLength * leftViewLength * rightViewLength;
+	}
+
+	int highestScenicScore(const std::vector<std::vector<int>>& treeMap)
+	{
+		std::vector<int> scores{};
+		for (int row{1}; row < treeMap.size() - 1; ++row)
+		{
+			for (int col{1}; col < treeMap[row].size() - 1; ++col)
+				scores.push_back({getViewLengthScoreAt(treeMap, row, col)});
+		}
+
+		return *boost::range::max_element(scores);
+	}
+
 	auto logic1(std::string file, bool debug = false)
 	{
 		std::ifstream stream{file};
@@ -91,18 +134,24 @@ namespace day08
 		std::ifstream stream{file};
 		if (!stream.is_open()) return -1;
 
+		// generate tree-map
 		std::string line;
+		std::vector<std::vector<int>> treeMap;
 		while (std::getline(stream, line))
 		{
-
+			treeMap.push_back({});
+			for (int i{0}; i < line.size(); ++i) treeMap[treeMap.size() - 1].push_back(int(line[i] - '0'));
 		}
 
-		return -1;
+		if (debug) printTreeMap(treeMap);
+
+		// get scenic score
+		return highestScenicScore(treeMap);
 	}
 
 	void runTest()
 	{
-		bool debug{true};
+		bool debug{false};
 
 		std::string file{"Day08_Test.txt"};
 		std::cout << "*** Testing day 08 ***\n\n";
