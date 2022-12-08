@@ -13,7 +13,8 @@ namespace day07
 		std::string name{""};
 		std::vector<Directory> directories{};
 		std::vector<File> files{};
-		long long sumFileSizes() {
+		long long sumFileSizes()
+		{
 			long long sum{0};
 			for (File f : files) sum += f.size;
 			for (Directory dir : directories) sum += dir.sumFileSizes();
@@ -70,6 +71,19 @@ namespace day07
 		return sum;
 	}
 
+	long long findSmallestSize(const std::vector<Directory>& dirs, long long max)
+	{
+		std::vector<long long> candidates;
+
+		for (Directory dir : dirs)
+		{
+			long long dirSize{dir.sumFileSizes()};
+			if (dirSize >= max) candidates.push_back(dirSize);
+		}
+
+		return *boost::range::min_element(candidates);
+	}
+
 	void correctDirectorySizes(std::vector<Directory>& dirs)
 	{
 		for (auto itDir = dirs.rbegin(); itDir != dirs.rend(); ++itDir)
@@ -114,7 +128,7 @@ namespace day07
 		}
 
 		correctDirectorySizes(dirs);
-		printDirectories(dirs);
+		if (debug) printDirectories(dirs);
 
 		return findSumBelow(dirs);
 	}
@@ -122,31 +136,62 @@ namespace day07
 	auto logic2(std::string file, bool debug = false)
 	{
 		std::ifstream stream{file};
-		if (!stream.is_open()) return -1;
+		if (!stream.is_open()) return -1LL;
 
+		std::vector<std::string> path{};
 		std::string line;
+		std::vector<Directory> dirs{};
 		while (std::getline(stream, line))
 		{
+			if (line == "$ cd ..")
+			{
+				path.pop_back();
+			}
+			else if (boost::starts_with(line, "$ cd"))
+			{
+				path.push_back(line.substr(5));
+				std::string newDirectory{boost::join(path, "/")};
+				dirs.push_back({newDirectory, {}, {}});
+			}
+			else if (!boost::starts_with(line, "$"))
+			{
+				std::vector<std::string> data;
+				boost::split(data, line, boost::is_any_of(" "), boost::token_compress_on);
+				std::string newDirectory{boost::join(path, "/")};
 
+				Directory& currentDirectory{find(dirs, newDirectory)};
+				if (data[0] == "dir") currentDirectory.directories.push_back({newDirectory + "/" + data[1]});
+				else currentDirectory.files.push_back({data[1], std::stoi(data[0])});
+			}
 		}
 
-		return -1;
+		correctDirectorySizes(dirs);
+		if (debug) printDirectories(dirs);
+
+		Directory root{find(dirs, "/")};
+		long long diskSpace{70000000},
+			updateRequired{30000000},
+			usedSpace{root.sumFileSizes()},
+			unusedSpace{diskSpace - usedSpace},
+			requiredSpace{updateRequired - unusedSpace};
+
+		return findSmallestSize(dirs, requiredSpace);
 	}
 
 	void runTest()
 	{
-		bool debug{true};
+		bool debug{false};
 
 		std::string file{"Day07_Test.txt"};
 		std::cout << "*** Testing day 07 ***\n\n";
 
-		auto x = logic1(file);
+		auto x = logic1(file, debug);
 		std::cout << "Part 1 (Test): " << x << "\n";
 		assert(x == day07::RESULT1);
 
 		if (debug) std::cout << "------------------" << "\n";
 
-		auto y = logic2(file);
+		auto y = logic2(file, debug);
 		std::cout << "Part 2 (Test): " << y << "\n";
 		assert(y == day07::RESULT2);
 	}
