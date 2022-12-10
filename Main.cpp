@@ -12,7 +12,7 @@
 
 int main()
 {
-	int day{10}, test{1};
+	int day{10}, test{0};
 
 	if (test)
 	{

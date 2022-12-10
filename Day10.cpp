@@ -2,18 +2,38 @@
 
 namespace day10
 {
+	bool isImportant(int cycleCount)
+	{
+		return cycleCount == 20 || ((cycleCount - 20) % 40 == 0);
+	}
+
+	int cycle(int& cycleCount, int& registerValue, const int cycles, const int add = 0)
+	{
+		int signalStrength{0};
+		for (int i{1}; i <= cycles; ++i)
+		{
+			++cycleCount;
+			if (isImportant(cycleCount)) signalStrength = cycleCount * registerValue;
+		}
+
+		registerValue += add;
+		return signalStrength;
+	}
+
 	auto logic1(std::string file, bool debug = false)
 	{
 		std::ifstream stream{file};
 		if (!stream.is_open()) return -1;
 
 		std::string line;
+		int sum{0}, cycleCount{0}, registerValue{1};
 		while (std::getline(stream, line))
 		{
-			std::cout << line << "\n";
+			if (line == "noop") sum += cycle(cycleCount, registerValue, 1);
+			else sum += cycle(cycleCount, registerValue, 2, std::stoi(line.substr(5)));
 		}
 
-		return -1;
+		return sum;
 	}
 
 	auto logic2(std::string file, bool debug = false)
