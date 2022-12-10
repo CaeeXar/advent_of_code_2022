@@ -7,6 +7,7 @@
 #include "Day06.h"
 #include "Day07.h"
 #include "Day08.h"
+#include "Day09.h"
 
 int main()
 {
@@ -22,6 +23,7 @@ int main()
 		if (day == 6) day06::runTest();
 		if (day == 7) day07::runTest();
 		if (day == 8) day08::runTest();
+		if (day == 9) day09::runTest();
 	}
 	else {
 		if (day < 1)  dayxx::run();
@@ -33,6 +35,7 @@ int main()
 		if (day == 6) day06::run();
 		if (day == 7) day07::run();
 		if (day == 8) day08::run();
+		if (day == 9) day09::run();
 	}
 
 	return 0;
