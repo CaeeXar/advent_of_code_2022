@@ -11,7 +11,7 @@
 
 int main()
 {
-	int day{8}, test{1};
+	int day{9}, test{0};
 
 	if (test) {
 		if (day < 1)  dayxx::runTest();
