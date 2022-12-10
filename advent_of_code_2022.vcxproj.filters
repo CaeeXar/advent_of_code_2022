@@ -13,132 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Headerdateien\day01">
-      <UniqueIdentifier>{51764f89-3fc8-468f-92da-589eb7b14020}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\dayxx">
-      <UniqueIdentifier>{6bcf7a2d-9120-49cf-96b0-f0ec5b7f4863}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\dayxx">
-      <UniqueIdentifier>{2e50ba7e-4cc8-4794-a81d-62a07fddcb08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day01">
-      <UniqueIdentifier>{2d7536d8-9d28-4a40-808e-82f4c9d3b9a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day02">
-      <UniqueIdentifier>{fe7b8f96-1e4e-4c8d-852e-e4a044210ab8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day02">
-      <UniqueIdentifier>{9c82be21-0150-4a22-9aab-f60e6db6b84b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day03">
-      <UniqueIdentifier>{782d310f-fbd3-42d0-a1f4-acacd0874bd4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day03">
-      <UniqueIdentifier>{2a6d320c-f74d-47d2-812e-0afd33102aaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day04">
-      <UniqueIdentifier>{d8f8741a-4785-457f-939e-d7e085e4319d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day04">
-      <UniqueIdentifier>{14270a67-acfd-4cc3-8a9c-e287307a7ad5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day05">
-      <UniqueIdentifier>{d3d2e80e-51e0-4e75-82ed-5d6f368bde6b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day05">
-      <UniqueIdentifier>{50138735-711d-4c56-9111-87d1ec42ff06}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day06">
-      <UniqueIdentifier>{a8bfa0cc-12d5-4b30-bc05-78d6c656fe61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day06">
-      <UniqueIdentifier>{7df7176f-f1fd-4e9b-b6e1-b0256e835541}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day07">
-      <UniqueIdentifier>{90dd8a73-24b6-4bc6-b4e4-4fc304f096bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day07">
-      <UniqueIdentifier>{90cb81e3-4532-4bf2-9bce-8d9f4f264553}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day08">
-      <UniqueIdentifier>{36f93a31-549f-47d1-96b2-cd851e1c4bec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day08">
-      <UniqueIdentifier>{87071729-6476-4ce9-a721-ace1a8ef6b94}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\day09">
-      <UniqueIdentifier>{dc3db2ec-697a-485f-bafc-f4eaec71d396}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\day09">
-      <UniqueIdentifier>{d249f7ec-4a86-4a11-a4fa-460cdfc63866}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Day01.cpp">
-      <Filter>Quelldateien\day01</Filter>
-    </ClCompile>
-    <ClCompile Include="Dayxx.cpp">
-      <Filter>Quelldateien\dayxx</Filter>
-    </ClCompile>
-    <ClCompile Include="Day02.cpp">
-      <Filter>Quelldateien\day02</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Day03.cpp">
-      <Filter>Quelldateien\day03</Filter>
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Day02.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Day04.cpp">
-      <Filter>Quelldateien\day04</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Day05.cpp">
-      <Filter>Quelldateien\day05</Filter>
-    </ClCompile>
-    <ClCompile Include="Day06.cpp">
-      <Filter>Quelldateien\day06</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Day07.cpp">
-      <Filter>Quelldateien\day07</Filter>
-    </ClCompile>
-    <ClCompile Include="Day08.cpp">
-      <Filter>Quelldateien\day08</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Day09.cpp">
-      <Filter>Quelldateien\day09</Filter>
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Day08.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Dayxx.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Day10.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Day06.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Day01.h">
-      <Filter>Headerdateien\day01</Filter>
-    </ClInclude>
-    <ClInclude Include="Dayxx.h">
-      <Filter>Headerdateien\dayxx</Filter>
-    </ClInclude>
-    <ClInclude Include="Day02.h">
-      <Filter>Headerdateien\day02</Filter>
-    </ClInclude>
-    <ClInclude Include="Day03.h">
-      <Filter>Headerdateien\day03</Filter>
-    </ClInclude>
-    <ClInclude Include="Day04.h">
-      <Filter>Headerdateien\day04</Filter>
-    </ClInclude>
-    <ClInclude Include="Day05.h">
-      <Filter>Headerdateien\day05</Filter>
-    </ClInclude>
-    <ClInclude Include="Day06.h">
-      <Filter>Headerdateien\day06</Filter>
-    </ClInclude>
-    <ClInclude Include="Day07.h">
-      <Filter>Headerdateien\day07</Filter>
+    <ClInclude Include="Day09.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Day08.h">
-      <Filter>Headerdateien\day08</Filter>
+      <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Day09.h">
-      <Filter>Headerdateien\day09</Filter>
+    <ClInclude Include="Dayxx.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day01.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day02.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day03.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day04.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day05.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day06.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day07.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Day10.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +140,12 @@
       <Filter>Ressourcendateien</Filter>
     </Text>
     <Text Include="Day09_Input.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+    <Text Include="Day10_Test.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+    <Text Include="Day10_Input.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
   </ItemGroup>
