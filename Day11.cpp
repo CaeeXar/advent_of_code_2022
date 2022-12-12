@@ -2,8 +2,7 @@
 
 namespace day11
 {
-#pragma region PART1
-	using WorryLevels = std::vector<boost::multiprecision::uint1024_t>;
+	using WorryLevels = std::vector<uint64_t>;
 
 	struct Monkey
 	{
@@ -14,18 +13,18 @@ namespace day11
 		const int test{0};
 		const int trueMonkey{0};
 		const int falseMonkey{0};
-		boost::multiprecision::uint1024_t inspected{0};
+		uint64_t inspected{0};
 
-		boost::multiprecision::uint1024_t newWorryLevel(const boost::multiprecision::uint1024_t old)
+		uint64_t newWorryLevel(const uint64_t old)
 		{
-			boost::multiprecision::uint1024_t newValue{0};
+			uint64_t newValue{0};
 			switch (operation)
 			{
 				case '+': newValue = old +
-					(boost::multiprecision::uint1024_t)(operand == "old" ? old : std::stoi(operand));
+					(uint64_t)(operand == "old" ? old : std::stoi(operand));
 					break;
 				case '*': newValue = old *
-					(boost::multiprecision::uint1024_t)(operand == "old" ? old : std::stoi(operand));
+					(uint64_t)(operand == "old" ? old : std::stoi(operand));
 					break;
 			}
 
@@ -34,21 +33,23 @@ namespace day11
 
 		std::string to_string()
 		{
-			std::string s = "Monkey " + std::to_string(ID) + ":\n" + std::string(" - Items: ");
+			std::string s = "Monkey " + std::to_string(ID) + ":\n" +
+				std::string(" - Items: ");
 
-			for (const boost::multiprecision::uint1024_t& worryLevel : worryLevels)
+			for (const uint64_t& worryLevel : worryLevels)
 			{
-				s += worryLevel.str() + ", ";
+				s += std::to_string(worryLevel) + ", ";
 			}
 
 			s += std::string("\n") + std::string(" - Operation: new = old ") +
 				(char)operation + std::string(" ") + operand + std::string("\n") +
-				std::string(" - Test: divisible by ") + std::to_string(test) + std::string("\n") +
-				std::string("    - If true: throw to monkey ") + std::to_string(trueMonkey) +
-				std::string("\n") + std::string("    - If false: throw to monkey ") +
+				std::string(" - Test: divisible by ") + std::to_string(test) +
+				std::string("\n") + std::string("    - If true: throw to monkey ") +
+				std::to_string(trueMonkey) + std::string("\n") +
+				std::string("    - If false: throw to monkey ") +
 				std::to_string(falseMonkey) + std::string("\n");
-			return s;
 
+			return s;
 		}
 
 	};
@@ -81,59 +82,85 @@ namespace day11
 		{
 			if (line == "")
 			{
-				monkeys.push_back({ID++, worryLevels, operand, operation, test, trueMonkey, falseMonkey});
+				monkeys.push_back({ID++, worryLevels, operand, operation,
+								   test, trueMonkey, falseMonkey});
 				worryLevels = {};
 				continue;
 			}
 
 			if (boost::starts_with(line, "  Starting items:"))
 			{
-				boost::split(temp, line.substr(18), boost::is_any_of(","), boost::token_compress_on);
+				boost::split(temp, line.substr(18), boost::is_any_of(","),
+					boost::token_compress_on);
 				for (std::string item : temp)
 				{
-					worryLevels.push_back((boost::multiprecision::uint1024_t)std::stoi(item));
+					worryLevels.push_back((uint64_t)std::stoi(item));
 				}
 			}
 
 			if (boost::starts_with(line, "  Operation:"))
 			{
-				boost::split(temp, line.substr(23), boost::is_any_of(" "), boost::token_compress_on);
+				boost::split(temp, line.substr(23), boost::is_any_of(" "),
+					boost::token_compress_on);
 				operation = {temp[0][0]};
 				operand = {temp[1]};
 			}
 
-			if (boost::starts_with(line, "  Test:")) test = {std::stoi(line.substr(21))};
-			if (boost::starts_with(line, "    If true:")) trueMonkey = {std::stoi(line.substr(29))};
-			if (boost::starts_with(line, "    If false:")) falseMonkey = {std::stoi(line.substr(30))};
+			if (boost::starts_with(line, "  Test:"))
+				test = {std::stoi(line.substr(21))};
+			if (boost::starts_with(line, "    If true:"))
+				trueMonkey = {std::stoi(line.substr(29))};
+			if (boost::starts_with(line, "    If false:"))
+				falseMonkey = {std::stoi(line.substr(30))};
 		}
 
-		monkeys.push_back({ID++, worryLevels, operand, operation, test, trueMonkey, falseMonkey});
+		monkeys.push_back({ID++, worryLevels, operand, operation,
+						   test, trueMonkey, falseMonkey});
 
 		return monkeys;
 	}
 
-	void playRound(Monkeys& monkeys, const boost::multiprecision::uint1024_t divider)
+	uint64_t getBoundary(const Monkeys& monkeys)
 	{
-		WorryLevels newWorryLevels{};
+		// build product of each monkeys test (divisible by), so mod-calculations
+		// are corrent in the further run
+		uint64_t boundary{1};
+		for (Monkey m : monkeys)
+		{
+			boundary *= m.test;
+		}
+
+		return boundary;
+	}
+
+	void playRound(Monkeys& monkeys, const uint64_t boundary, const double divider)
+	{
 		for (Monkey& monkey : monkeys)
 		{
 			while (monkey.worryLevels.size() > 0)
 			{
-				boost::multiprecision::uint1024_t newWorryLevel{
-					(boost::multiprecision::uint1024_t)(monkey.newWorryLevel(monkey.worryLevels[0]) / divider)
+				// get new worry level and cut of any decimal
+				uint64_t newWorryLevel{
+					static_cast<uint64_t>(
+						monkey.newWorryLevel(monkey.worryLevels[0]) / divider
+					)
 				};
 
-				if (newWorryLevel <= 0)
-				{
-					std::cout << "current WL: " << monkey.worryLevels[0] << "\n";
-					std::cout << "new WL    : " << newWorryLevel << "\n";
-				}
+				// keep numbers low
+				newWorryLevel %= boundary;
 
+				// monkey got bored inspecting, so remove current item...
 				monkey.worryLevels.erase(monkey.worryLevels.begin());
-				Monkey& m{getMonkeyByID(monkeys,
-					(newWorryLevel % monkey.test == 0) ? monkey.trueMonkey : monkey.falseMonkey)};
-				m.worryLevels.push_back(newWorryLevel);
 				monkey.inspected++;
+
+				// ...and pass it to another monkey
+				Monkey& m{
+					getMonkeyByID(monkeys,
+								 (newWorryLevel % monkey.test == 0) ?
+									monkey.trueMonkey :
+									monkey.falseMonkey)
+				};
+				m.worryLevels.push_back(newWorryLevel);
 			}
 
 		}
@@ -155,59 +182,61 @@ namespace day11
 				<< monkey.inspected << " times!\n";
 		}
 	}
-#pragma endregion PART1
 
 	auto logic1(std::string file, bool debug = false)
 	{
-		// play 20 rounds
-		boost::multiprecision::uint1024_t divider{3};
+		// initialize 
 		Monkeys monkeys{initializeMonkeys(file)};
+		// boundary needed to keep calculations corrent and numbers low
+		uint64_t boundary{getBoundary(monkeys)};
+
+		// play 20 rounds
+		double divider{3.0};
 		for (int i{0}; i < 20; ++i)
 		{
-			playRound(monkeys, divider);
+			playRound(monkeys, boundary, divider);
 		}
 
 		if (debug) printMonkeys(monkeys);
 
 		// get 2 most active monkeys 
-		std::set<boost::multiprecision::uint1024_t> max{};
+		std::set<uint64_t> max{};
 		for (Monkey m : monkeys)
 		{
 			max.insert(m.inspected);
 		}
 
 		auto end = max.end();
-		boost::multiprecision::uint1024_t x = {*--end}, y = {*--end};
+		uint64_t x = {*--end}, y = {*--end};
 		return x * y;
 	}
 
 	auto logic2(std::string file, bool debug = false)
 	{
-		// FUCK IT FOR KNOW
-		return -1;
-		//// play 10000 rounds
-		//boost::multiprecision::uint1024_t divider{1};
-		//Monkeys monkeys{initializeMonkeys(file)};
-		//for (int i{0}; i < 10000; ++i)
-		//{
-		//	playRound(monkeys, divider);
-		//	if (debug && (i + 1) % 1000 == 0)
-		//	{
-		//		std::cout << "== After round " << (i + 1) << " ==\n";
-		//		printInspected(monkeys);
-		//		std::cout << "\n";
-		//	}
-		//}
-		//if (debug) printMonkeys(monkeys);
-		//// get 2 most active monkeys 
-		//std::set<boost::multiprecision::uint1024_t> max{};
-		//for (Monkey m : monkeys)
-		//{
-		//	max.insert(m.inspected);
-		//}
-		//auto end = max.end();
-		//boost::multiprecision::uint1024_t x = {*--end}, y = {*--end};
-		//return x * y;
+		// initialize 
+		Monkeys monkeys{initializeMonkeys(file)};
+		// boundary needed to keep calculations corrent and numbers low
+		uint64_t boundary{getBoundary(monkeys)};
+
+		// play 10.000 rounds
+		double divider{1.0};
+		for (int i{0}; i < 10000; ++i)
+		{
+			playRound(monkeys, boundary, divider);
+		}
+
+		if (debug) printMonkeys(monkeys);
+
+		// get 2 most active monkeys 
+		std::set<uint64_t> max{};
+		for (Monkey m : monkeys)
+		{
+			max.insert(m.inspected);
+		}
+
+		auto end = max.end();
+		uint64_t x = {*--end}, y = {*--end};
+		return x * y;
 	}
 
 	void runTest()
@@ -215,7 +244,7 @@ namespace day11
 		std::string file{"Day11_Test.txt"};
 		std::cout << "*** Testing day 11 ***\n\n";
 
-		auto x = logic1(file);
+		auto x = logic1(file, true);
 		std::cout << "Part 1 (Test): " << x << "\n";
 		assert(x == day11::RESULT1);
 

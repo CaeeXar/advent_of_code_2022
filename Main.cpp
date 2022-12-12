@@ -14,7 +14,7 @@
 
 int main()
 {
-	int day{11}, test{1};
+	int day{11}, test{0};
 
 	if (test)
 	{
