@@ -10,11 +10,11 @@
 #include "Day09.h"
 #include "Day10.h"
 #include "Day11.h"
-
+#include "Day12.h"
 
 int main()
 {
-	int day{11}, test{0};
+	int day{12}, test{1};
 
 	if (test)
 	{
@@ -30,6 +30,7 @@ int main()
 		if (day == 9)  day09::runTest();
 		if (day == 10) day10::runTest();
 		if (day == 11) day11::runTest();
+		if (day == 12) day12::runTest();
 	}
 	else
 	{
@@ -45,6 +46,7 @@ int main()
 		if (day == 9)  day09::run();
 		if (day == 10) day10::run();
 		if (day == 11) day11::run();
+		if (day == 12) day12::run();
 	}
 
 	return 0;

@@ -32,8 +32,6 @@ namespace dayxx
 
 	void runTest()
 	{
-		bool debug{true};
-
 		std::string file{""};
 		std::cout << "*** Testing day xx ***\n\n";
 
@@ -41,7 +39,7 @@ namespace dayxx
 		std::cout << "Part 1 (Test): " << x << "\n";
 		assert(x == dayxx::RESULT1);
 
-		if (debug) std::cout << "------------------" << "\n";
+		std::cout << "------------------" << "\n";
 
 		auto y = logic2(file);
 		std::cout << "Part 2 (Test): " << y << "\n";
