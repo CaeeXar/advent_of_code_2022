@@ -57,7 +57,7 @@
     <ClCompile Include="Day12.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Day13.cpp">
+    <ClCompile Include="Day14.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,7 +101,7 @@
     <ClInclude Include="Day12.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Day13.h">
+    <ClInclude Include="Day14.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -182,6 +182,12 @@
       <Filter>Ressourcendateien</Filter>
     </Text>
     <Text Include="Day13_Input.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+    <Text Include="Day14_Test.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+    <Text Include="Day14_Input.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
   </ItemGroup>
